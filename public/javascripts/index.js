@@ -1,3 +1,12 @@
+function createArticleView(article) {
+  var articleView = new Ext.ArticleView({
+    article: article,
+    direction: 'vertical'
+  });
+  
+  return articleView;
+}
+
 Ext.setup({
     tabletStartupScreen: 'tablet_startup.png',
     phoneStartupScreen: 'phone_startup.png',
@@ -5,50 +14,21 @@ Ext.setup({
     glossOnIcon: false,
     onReady: function() {
         // Create a Carousel of Items
-        var carousel1 = new Ext.Carousel({
-          direction: 'vertical',
-            defaults: {
-                cls: 'card'
-            },
-            items: [{
-                html: data.edition.section[0].article[0].body
-            },
-            {
-                title: 'Tab 1.2',
-                html: '1.2'
-            },
-            {
-                title: 'Tab 1.3',
-                html: '1.3'
-            }]
-        });
-
-        var carousel2 = new Ext.Carousel({
-          direction: 'vertical',
-            defaults: {
-                cls: 'card'
-            },
-            items: [{
-                html: '2.1'
-            },
-            {
-                title: 'Tab 2.2',
-                html: '2.2'
-            },
-            {
-                title: 'Tab 2.3',
-                html: '2.3'
-            }]
-        });
+        var articles = data.edition.section[0].article;
+        var articleWidgets = [];
         
-        var carousel3 = new Ext.Carousel({
+        for (var i=0; i < articles.length; i++) {
+          articleWidgets.push(createArticleView(data.edition.section[0].article[i]));
+        }
+        
+        var articles = new Ext.Carousel({
             direction: 'horizontal',
             ui: 'light',
             activeItem: 0,
             defaults: {
-                cls: 'card'
+                cls: 'section'
             },
-            items: [carousel1, carousel2]
+            items: articleWidgets
         });
 
         new Ext.Panel({
@@ -60,7 +40,7 @@ Ext.setup({
             defaults: {
                 flex: 1
             },
-            items: [carousel3]
+            items: [articles]
         });
     }
 });
