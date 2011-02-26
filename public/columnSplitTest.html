@@ -15,7 +15,11 @@
       	column-count: 2;
       	column-gap: 20px;
       	
-      	height: 300px;
+      	position: absolute;
+      	left: 0;
+      	top: 0;
+      	right: 0;
+      	bottom: 0;
       }
       
       p {
@@ -34,8 +38,7 @@
           $(this).html($(this).offset().left + ", " + $(this).offset().top + " " + $(this).html());
         });
         
-        var pages = $("#testCase1").pageBreak(2);
-        console.log(pages);
+        var pages = $("#testCase1").pageBreak(2,0);
         for (var page=0; page < pages.length; page++) {
           for (var p=0; p < pages[page].length; p++) {
             pages[page][p].css("background", page % 2 ? "orange" : "green");

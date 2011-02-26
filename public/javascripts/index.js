@@ -1,12 +1,3 @@
-function createArticleView(article) {
-  var articleView = new Ext.ArticleView({
-    article: article,
-    direction: 'vertical'
-  });
-  
-  return articleView;
-}
-
 Ext.setup({
     tabletStartupScreen: 'tablet_startup.png',
     phoneStartupScreen: 'phone_startup.png',
@@ -18,7 +9,10 @@ Ext.setup({
         var articleWidgets = [];
         
         for (var i=0; i < articles.length; i++) {
-          articleWidgets.push(createArticleView(data.edition.section[0].article[i]));
+          articleWidgets.push(new Ext.ArticleView({
+            article: articles[i],
+            direction: 'vertical'
+          }));
         }
         
         var articles = new Ext.Carousel({

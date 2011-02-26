@@ -3,22 +3,22 @@
     return $( $('<div></div>').html(this.clone()) ).html();
   }
 
-  $.fn.pageBreak = function (columns) {
+  $.fn.pageBreak = function (columns, maxPages) {
     var ps = this.find("p");
-      
+    
     var columnIndex = 0;
-    var lastTop = ps.first().position().left;
-    var columnLeft = ps.first().position().left;
+    var lastTop = ps.first().offset().top;
     var pages = [];
     var currentPage = [];
     var lastPage;
     pages.push(currentPage);
     
-    ps.each(function () {
-      var p = $(this);
+    for (var i=0; i < ps.length; i++) {
+      var p = $(ps[i]);
       var pos = p.offset();
-      if (pos.top < lastTop) {
+      if (pos.top < lastTop && (!maxPages || maxPages > pages.length)) {
         columnIndex++;
+        
 
         if (columnIndex % columns == 0) {
           lastPage = currentPage;
@@ -26,6 +26,7 @@
           pages.push(currentPage);
           
           var lastParagraph = lastPage[lastPage.length-1];
+          
           var redPs = splitParagraph(lastParagraph);
           var redP0 = $(redPs[0]);
           var redP1 = $(redPs[1]);
@@ -58,14 +59,14 @@
           p.addClass("continued");
           bluePs.css("color", "blue");
           bluePs.first().css("color", "lightBlue");
-          console.log("bluePs", bluePs);
           
         }
       }
+
       lastTop = pos.top;
-      
+
       currentPage.push(p);
-    });
+    }
     
     return pages;
   }
