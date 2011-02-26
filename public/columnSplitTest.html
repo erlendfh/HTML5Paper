@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
+    <title>Column split test</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script src="javascripts/pagebreak.js" type="text/javascript" charset="utf-8"></script>
+    
+    <style type="text/css" media="screen">
+      #testCase1 {
+        -moz-column-count: 2;
+      	-moz-column-gap: 20px;
+      	-webkit-column-count: 2;
+      	-webkit-column-gap: 20px;
+      	column-count: 2;
+      	column-gap: 20px;
+      	
+      	height: 300px;
+      }
+      
+      p {
+        margin-top: 1em;
+        margin-bottom: 0;
+      }
+      
+      p.continued {
+        margin-top: 0;
+      }
+      
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        $("#testCase1 p").each(function () {
+          $(this).html($(this).offset().left + ", " + $(this).offset().top + " " + $(this).html());
+        });
+        
+        var pages = $("#testCase1").pageBreak(2);
+        console.log(pages);
+        for (var page=0; page < pages.length; page++) {
+          for (var p=0; p < pages[page].length; p++) {
+            pages[page][p].css("background", page % 2 ? "orange" : "green");
+            
+          }
+        }
+        
+      });
+    </script>
+</head>
+<body>
+  <div id="testCase1">
+    <p>- Dette er skrekkscenariet alle har fryktet, sier oljeanalytiker.</p>
+
+    <p>Uroen i Libya får skylden for at oljeprisen har steget 10 prosent de siste fire dagene og mer enn 25 prosent siden årsskiftet.</p>
+
+    <p><strong>Torsdag morgen toppet prisen på 119,79 dollar pr. fat før prisen la seg på rundt 117 dollar. Oljeproduksjonen i landet er stanset og de store internasjonale selskapene har trukket seg ut.</strong></p>
+
+    <p>- Frykten for at uroen i Libya skal spre seg er svært stor. Libya produserer normalt rundt 1,5 millioner fat olje om dagen, og regionen som helhet står for 30 prosent av verdens oljeproduksjon, sier oljeanalytiker Thina Margrethe Saltvedt i Nordea Markets til Aftenposten.no.</p>
+
+    <p><strong>Saudi-Arabia er avgjørende</strong><br>Hun peker på at verden er stadig mer avhengig av Midtøstens produksjon av olje. Og det er ikke mulig for andre land å øke sin produksjon på kort sikt, slikt tar svært lang tid i oljebransjen.</p>
+
+    <p>- Dette er skrekkscenariet alle har fryktet. Saudi-Arabia har ekstra kapasitet til å dekke opp for det Libya skulle ha produsert av olje, men dersom uroen sprer seg er det ingen som kan klare det. Da får vi mangel på olje i store deler av verden, sier Saltvedt.</p>
+
+    <p><strong>Saudi-Arabia står alene for 15 prosent av produksjonen i verden og både USA og Kina er storimportører av olje fra landet.</strong></p>
+
+    <p>- Dersom det bryter ut uro i Saudi-Arabia er det krise. Nå har kongen i landet annonsert en voldsom støttepakke til befolkningen med økte lønninger, mer penger til de fattige og så videre, for å demme opp for uro blant befolkningen. USA og Kina presser garantert på for å forsikre seg om at kongen sørger for ro i landet, fordi de er så avhengig av oljen deres.</p>
+
+    <p><strong>Dyrere ved pumpene</strong><br>For forbrukeren vil den høye oljeprisen først merkes når du skal fylle opp tanken på bilen.</p>
+
+    <p><strong>- Drivstoff vil gå opp i pris først, man vil se det på pumpene med bensin og diesel. Flybilletter vil også bli dyrere, drivstoff er en stor utgift for flyselskapene. Men også svært mange andre varer vil øke i pris fordi olje brukes i produksjonen og transport av det aller meste, fra mat til elektronikk og klær, sier Saltvedt.</strong></p>
+
+    <p>Hun legger til at olje er den aller viktigste energikilden i verden og dermed får prisvariasjoner kraftige konsekvenser for hele verdensøkonomien.</p>
+
+    <p>For den norske staten er økt oljepris også gode nyheter.</p>
+
+    <p><strong>- For hver tikrone som oljeprisen stiger, vil staten tjene 4,9 milliarder kroner mer på årsbasis, sier Saltvedt.</strong></p>
+
+    <p>Dersom prisen blir liggende på dagens nivå ut året vil Norge tjene omtrent 65 milliarder kroner mer i 2011 enn det som var beregnet i statsbudsjettet. Men pengene ser vi lite til på kort sikt, de styres inn i Oljefondet.</p>
+
+    <p><strong>Sårbar vekst i verden</strong><br>For verdensøkonomien er den høye oljeprisen veldig dårlige nyheter fordi den kan bremse veksten som omsider var tilbake etter finanskrisen.</p>
+
+    <p><strong>- Oppsvinget som var i gang igjen er sårbart. Det er klart at jo lenger oljeprisen holder seg så høy, jo større fare er det for den globale veksten, sier seniorøkonom Kjersti Haugland i DnB NOR Markets til Aftenposten.no.</strong></p>
+
+    <p>Hun peker på at amerikanske forbrukere er en nøkkelfaktor for den økonomiske veksten. De er også svært avhengig av drivstoff og forbrukertilliten i USA svinger i takt med oljeprisen.</p>
+
+    <p>- Amerikanerne bruker mye olje og er sårbare for prisøkninger. Men det har kommet flere gode tall fra USA den siste tiden, forbrukerne bruker mer penger og Obamas skattelette gir også et bidrag til vekst. Samtidig svekkes dollaren av oljeprisen og det er bra for amerikansk eksport og økonomi.</p>
+
+    <p>DnB NOR tror uroen i Midtøsten er midlertidig, og forventer at oljeprisen faller tilbake til mer normale nivåer i løpet av et par måneder. Men Haugland understreker at den ustabile situasjonen i regionen er en risikofaktor.</p>
+  </div>
+</body>
+</html>

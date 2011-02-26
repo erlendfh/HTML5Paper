@@ -15,50 +15,7 @@ Ext.ArticleView = Ext.extend(Ext.Carousel, {
     this.on("afterlayout", function() {
       if (completed) return;
       completed = true;
-      var self = this;
-      var size = this.body.getSize();
-      console.log(size);
-      var firstPage = $(this.body.dom).find(".x-carousel-item:first");
-      var ps = firstPage.find("p");
-        
-      var columnIndex = 0;
-      var columnLeft = ps.first().position().left;
-      var pages = [];
-      var currentPage = [];
-      
-      ps.each(function () {
-        var p = $(this);
-        var pos = p.position();
-        
-        if (pos.left > columnLeft) {
-          columnIndex++;
-          columnLeft = pos.left;
-
-          if (columnIndex % self.columns == 0) {
-            currentPage[currentPage.length-1] = self.splitParagraph(currentPage[currentPage.length-1], size.height);
-            
-            currentPage = [];
-            pages.push(currentPage);
-          }
-        }
-        
-        currentPage.push(p);
-      });
-            
-      var self = this;
-      $(pages).each(function () {
-        var html = "";
-        $(this).each(function () {
-          html += $(this).outer();
-        });
-        self.add({
-          html: html
-        });
-      });
-      
-      self.doLayout();
-
-      console.log("done");
+      this.breakPages();
     });
     
     this.items = [{
@@ -68,37 +25,34 @@ Ext.ArticleView = Ext.extend(Ext.Carousel, {
     Ext.ArticleView.superclass.initComponent.call(this);
   },
   
-  splitParagraph: function (p, maxOffset) {
-    var text = this.splitNode(p);
-    var newP = $(text);
-    p.replaceWith(newP);
-
-    newP.find("span").each(function () {
-      console.log(maxOffset, this.offsetTop, this.innerHTML);
-    });
-    
-    return newP;
-  },
-  
-
-  splitNode: function (node) {
-    var self = this;
-      node = $(node);
-      var childNodes = node.attr("childNodes");
-      if (childNodes) {
-          var text = "";
-          $(childNodes).each(function () {
-              text += self.splitNode(this);
-          });
-          node.html(text);
-          return node.outer();
-      } else {
-          return node.text().replace(/([^\s]+)/g, "<span>$1</span>");
-      }
-  },
-    
   formatBody: function(text) {
     return "<p>" + text.replace(/\n\n/g, "</p><p>") + "</p>";
+  },
+  
+  breakPages: function() {
+    var self = this;
+    var size = this.body.getSize();
+
+    var firstPage = $(this.body.dom).find(".x-carousel-item:first");
+    var pages = firstPage.pageBreak(this.columns);
+    
+    for (var i = 1; i < pages.length; i++) {
+      var html = "";
+      // convert paragraphs to html
+      $(pages[i]).each(function () {
+        var p = $(this);
+        html += p.outer();
+        p.remove();
+      });
+      
+      if (html) {
+        var res = this.add({
+          html: html
+        });
+      }        
+    }
+    
+    this.doLayout();    
   }
 });
 
