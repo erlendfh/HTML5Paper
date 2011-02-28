@@ -34,8 +34,8 @@
           
           lastPage[lastPage.length-1] = redP0;
           
-          redPs.css("color", "red");
-          redPs.first().css("color", "lightRed");
+          // redPs.css("color", "red");
+          // redPs.first().css("color", "lightRed");
           redP1.addClass("continued");
 
           if (redP1.length && redP1.offset().top < redP0.offset().top) {
@@ -57,8 +57,8 @@
 
           p = blueP1;
           p.addClass("continued");
-          bluePs.css("color", "blue");
-          bluePs.first().css("color", "lightBlue");
+          // bluePs.css("color", "blue");
+          // bluePs.first().css("color", "lightBlue");
           
         }
       }

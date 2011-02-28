@@ -27,13 +27,21 @@ no.bekk.html5paper.SectionView = Ext.extend(Ext.Panel, {
   },
   
   buildArticleHtml: function (article, index) {
-    var image = article.children("images").children("image:first");
+    var image = this.findImage(article);
     var id = article.attr("id");
     return '<div class="article article' + index + '" articleid="' + id + '">'
         + '<div class="image">' + (image ? '<img src="' + image.attr('src') + '" />' : '') + '</div>'
         + '<h2>' + article.children('title').text() + '</h2>'
         + '<div class="leadText">' + article.children('leadText').text() + '</div>'
       + '</div>';
+  },
+
+  findImage: function (article) {
+    var image = article.children("images").children("image:first");
+    if (image.length) return image;
+    
+    image = article.children("videos").children("video:first").children("image:first");
+    return image;
   },
   
   formatBody: function(text) {

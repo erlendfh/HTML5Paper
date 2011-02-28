@@ -14,7 +14,6 @@ no.bekk.html5paper.AppView = Ext.extend(Ext.Panel, {
     });
     
     this.navigationBar.on('back', function () {
-      console.log("BACK")
       this.contentView.setActiveItem(0, 'fade');
     }, this);
     

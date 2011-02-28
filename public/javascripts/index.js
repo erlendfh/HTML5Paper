@@ -48,11 +48,25 @@ function initApp(xml) {
     articlesBySection: articlesBySection
   });
   
-  $('.sectionView .article').click(function () {
+  var downPos = {};
+  $('.sectionView .article').mousedown(function (e) {
+    downPos.x = e.pageX;
+    downPos.y = e.pageY;
+  });
+  
+  $('.sectionView .article').mouseup(function (e) {
+    var dx = (e.pageX - downPos.x);
+    var dy = (e.pageY - downPos.y);
+    var length = Math.sqrt(dx*dx + dy*dy);
+    if (length > 5) { // Ignore drags
+      return;
+    }
+
     var id = $(this).attr("articleid");
     window.location.hash = "#article-" + id;
     app.showArticle(articleIndex[id]);
   });
+  
 }
 
 Ext.setup({
