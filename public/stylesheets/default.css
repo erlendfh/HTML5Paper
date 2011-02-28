@@ -2,6 +2,14 @@ body {
   font-family: "Book Antiqua", Times;
 }
 
+img {
+  visibility: hidden;
+}
+
+.navigationBar {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8D8D8D), color-stop(100%,#000000));
+}
+
 .articleView {
     color: black;
     background: white;

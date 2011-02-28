@@ -1,9 +1,6 @@
-jQuery.fn.outer = function() {
-  return $( $('<div></div>').html(this.clone()) ).html();
-}
+Ext.namespace('no.bekk.html5paper');
 
-
-Ext.ArticleView = Ext.extend(Ext.Carousel, {
+no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
   cls: "articleView",
   columns: 2,
   
@@ -16,12 +13,15 @@ Ext.ArticleView = Ext.extend(Ext.Carousel, {
         completed = this.breakPages(laidOutPages);
     });
 
+    var article = $(this.article);
+    this.id = 'article-' + article.attr("id");
+
     this.items = [{
       cls: 'page',
-      html: this.buildArticleHtml($(this.article))
+      html: this.buildArticleHtml(article)
     }];
     
-    Ext.ArticleView.superclass.initComponent.call(this);
+    no.bekk.html5paper.ArticleView.superclass.initComponent.call(this);
   },
   
   buildArticleHtml: function (article) {
