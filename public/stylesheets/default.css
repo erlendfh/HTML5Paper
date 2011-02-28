@@ -1,11 +1,130 @@
 body {
   font-family: "Book Antiqua", Times;
+  bakground: white;
 }
 
 .navigationBar {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8D8D8D), color-stop(100%,#000000));
 }
+/*
+ * FrontpageView
+ */
+.frontpageView {
+  background: white;
+}
 
+.frontpageView .article {
+  background: none;
+  font-size: 13px;
+}
+
+.frontpageView .article h2 {
+  font-weight: bold;
+  font-size: 110%;
+  margin: 20px;
+}
+
+.frontpageView .article .leadText {
+  margin: 20px;
+}
+
+
+.frontpageView .article .image {
+  width: auto;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.frontpageView .article .image img {
+  width: 100%;
+}
+
+/*
+ * Main article
+ */
+.frontpageView .article0 {
+  width: 73%;
+  min-height: 500px;
+  font-size: 120%;
+  margin-bottom: 40px;
+  background: white;
+}
+
+.frontpageView .article0 .image {
+  max-height: 350px;
+  margin: 0;
+}
+
+.frontpageView .article0 .leadText {
+  font-size: 70%;
+}
+
+/*
+ * Article 2, 3 & 4
+ */
+.frontpageView .sectionArticles {
+  background: #f5f5f5;
+  padding-top: 40px;
+  border-top: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.frontpageView .article1,
+.frontpageView .article2 {
+  border-right: 1px solid #ccc;
+}
+
+.frontpageView .article1,
+.frontpageView .article2,
+.frontpageView .article3 {
+  width: 33%;
+  float: left;
+}
+
+
+.frontpageView .article1 .image,
+.frontpageView .article2 .image,
+.frontpageView .article3 .image {
+  max-height: 150px;
+  margin-top: -20px;
+}
+
+.frontpageView .sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 27%;
+  padding-left: 1px;
+  -webkit-box-sizing: content-box;
+  height: 350px;
+  background: #333;
+  color: #ccc;
+  font-family: Arial;
+  font-size: 80%;
+}
+
+.frontpageView .sidebar h2 {
+  text-transform: uppercase;
+  margin: 20px;
+}
+
+.frontpageView .leder {
+  position: absolute;
+  top: 370px;
+  right: 0;
+  width: 27%;
+  border-left: 1px solid #ccc;
+  height: 130px;
+  text-overflow: ellipsis;
+}
+
+.frontpageView .leder .image {
+  display: none;
+}
+
+/*
+ * ArticleView
+ */
 .articleView {
     color: black;
     background: white;
@@ -34,7 +153,7 @@ body {
 
 .articleView .mainImage video {
   width: 100%;
-  margin-top: 70px;
+  margin-top: 0;
   display: none;
 }
 
@@ -91,7 +210,7 @@ body {
 }
 
 /*
- * Sections
+ * SectionView
  */
 .sectionView {
  background: white;
@@ -111,7 +230,7 @@ body {
 
 .sectionView h1 span {
   display: block;
-  padding: 5px;
+  padding: 10px;
 }
 
 .sectionView .article {
@@ -158,7 +277,7 @@ body {
 }
 
 .sectionView .article0 .leadText {
-  font-size: 90%;
+  font-size: 70%;
 }
 
 /*

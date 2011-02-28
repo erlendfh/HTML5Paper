@@ -9,7 +9,12 @@ function initApp(xml) {
 
   var articleIndex = {};
 
-  var sectionWidgets = [];
+  var frontpage = new no.bekk.html5paper.FrontpageView({
+    frontpage: $(xml.find("edition > frontpage"))
+  });
+
+  var sectionWidgets = [frontpage];
+  
   for (var i=0; i < sections.length; i++) {
     sectionWidgets.push(new no.bekk.html5paper.SectionView({
       section: sections[i]
@@ -37,7 +42,6 @@ function initApp(xml) {
     }));
   }
 
-
   var sections = new Ext.Carousel({
     direction: 'horizontal',
     items: sectionWidgets
@@ -49,12 +53,12 @@ function initApp(xml) {
   });
   
   var downPos = {};
-  $('.sectionView .article').mousedown(function (e) {
+  $('.frontpageView .article, .sectionView .article').mousedown(function (e) {
     downPos.x = e.pageX;
     downPos.y = e.pageY;
   });
   
-  $('.sectionView .article').mouseup(function (e) {
+  $('.frontpageView .article, .sectionView .article').mouseup(function (e) {
     var dx = (e.pageX - downPos.x);
     var dy = (e.pageY - downPos.y);
     var length = Math.sqrt(dx*dx + dy*dy);

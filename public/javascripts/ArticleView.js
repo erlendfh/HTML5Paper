@@ -58,7 +58,7 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
     var video = article.children("videos").children("video:first");
     var image = video.children("image:first");
     if (image.length) {      
-      return '<div class="mainImage video"><img src="' + image.attr('src') + '" /><video poster="' + image.attr('src') + '" src="' + video.attr('movieUrl') + '" controls="controls"></video></div>';
+      return '<div class="mainImage video"><img src="' + image.attr('src') + '" /><video src="' + video.attr('movieUrl') + '" controls="controls"></video></div>';
     }
 
     var image = article.children("images").children("image:first");
