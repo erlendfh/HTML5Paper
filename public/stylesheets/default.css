@@ -51,8 +51,15 @@ body {
 }
 
 .frontpageView .article0 .image {
-  max-height: 350px;
+  height: 350px;
   margin: 0;
+  background: black;
+  position: relative;
+}
+
+.frontpageView .article0 .image img {
+  height: 100%;
+  width: auto;
 }
 
 .frontpageView .article0 .leadText {
@@ -114,7 +121,7 @@ body {
   right: 0;
   width: 27%;
   border-left: 1px solid #ccc;
-  height: 130px;
+  height: 150px;
   text-overflow: ellipsis;
 }
 
