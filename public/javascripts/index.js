@@ -2,7 +2,7 @@
   
 function initApp(xml) {
   xml = $(xml);
-  console.log("frontpage", xml.find("edition > frontpage"));
+
   // Create a Carousel of Items
   var sections = xml.find("edition > section");
   var articlesBySection = [];
@@ -36,10 +36,22 @@ function initApp(xml) {
       }));
     }
     
-    articlesBySection.push(new Ext.Carousel({
+    var articleCarousel = new Ext.Carousel({
         direction: 'horizontal',
         items: articleWidgets
-    }));
+    });
+    
+    articleCarousel.on('beforecardswitch', function (container, newCard, oldCard) {
+      oldCard.fireEvent('beforecardswitchout');
+      newCard.fireEvent('beforecardswitchin');
+    });
+
+    articleCarousel.on('cardswitch', function (container, newCard, oldCard) {
+      oldCard.fireEvent('cardswitchout');
+      newCard.fireEvent('cardswitchin');
+    });
+
+    articlesBySection.push(articleCarousel);
   }
 
   var sections = new Ext.Carousel({
@@ -52,25 +64,11 @@ function initApp(xml) {
     articlesBySection: articlesBySection
   });
   
-  var downPos = {};
-  $('.frontpageView .article, .sectionView .article').mousedown(function (e) {
-    downPos.x = e.pageX;
-    downPos.y = e.pageY;
-  });
-  
-  $('.frontpageView .article, .sectionView .article').mouseup(function (e) {
-    var dx = (e.pageX - downPos.x);
-    var dy = (e.pageY - downPos.y);
-    var length = Math.sqrt(dx*dx + dy*dy);
-    if (length > 5) { // Ignore drags
-      return;
-    }
-
+  $('.frontpageView .article, .sectionView .article').safeClick(function (e) {
     var id = $(this).attr("articleid");
     window.location.hash = "#article-" + id;
     app.showArticle(articleIndex[id]);
   });
-  
 }
 
 Ext.setup({
@@ -83,7 +81,6 @@ Ext.setup({
         url: '/data/edition',
         dataType: 'xml',
         success: function (xmlData) {
-           console.log("result", xmlData);
           initApp(xmlData);
         }
       });      

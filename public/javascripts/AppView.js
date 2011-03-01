@@ -2,6 +2,7 @@ Ext.namespace('no.bekk.html5paper');
 
 no.bekk.html5paper.AppView = Ext.extend(Ext.Panel, {
   fullscreen: true,
+  cls: 'appView',
   ui: 'light',
   layout: {
       type: 'vbox',

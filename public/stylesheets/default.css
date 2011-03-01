@@ -2,6 +2,14 @@ body {
   font-family: "Book Antiqua", Times;
   bakground: white;
 }
+.appView {
+  font-size: 12px;
+  color: #232323;
+}
+
+.article .leadText {
+  font-family: Arial;
+}
 
 .navigationBar {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8D8D8D), color-stop(100%,#000000));
@@ -13,14 +21,13 @@ body {
   background: white;
 }
 
-.frontpageView .article {
+/*.frontpageView .article {
   background: none;
-  font-size: 13px;
 }
-
+*/
 .frontpageView .article h2 {
   font-weight: bold;
-  font-size: 110%;
+  font-size: 120%;
   margin: 20px;
 }
 
@@ -43,27 +50,29 @@ body {
  * Main article
  */
 .frontpageView .article0 {
-  width: 73%;
+  width: 72%;
   min-height: 500px;
-  font-size: 120%;
+  font-size: 125%;
   margin-bottom: 40px;
   background: white;
 }
 
 .frontpageView .article0 .image {
-  height: 350px;
+  height: 370px;
   margin: 0;
   background: black;
   position: relative;
 }
 
 .frontpageView .article0 .image img {
-  height: 100%;
+  min-height: 100%;
   width: auto;
+  min-width: 100%;
 }
 
 .frontpageView .article0 .leadText {
-  font-size: 70%;
+  font-family: "Book Antiqua", Times;
+  font-size: 110%;
 }
 
 /*
@@ -100,10 +109,10 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  width: 27%;
+  left: 72%;
   padding-left: 1px;
   -webkit-box-sizing: content-box;
-  height: 350px;
+  height: 370px;
   background: #333;
   color: #ccc;
   font-family: Arial;
@@ -112,17 +121,27 @@ body {
 
 .frontpageView .sidebar h2 {
   text-transform: uppercase;
+  font-size: 120%;
   margin: 20px;
 }
 
 .frontpageView .leder {
   position: absolute;
-  top: 370px;
+  top: 390px;
   right: 0;
-  width: 27%;
+  left: 72%;
   border-left: 1px solid #ccc;
-  height: 150px;
-  text-overflow: ellipsis;
+  height: 120px;
+  overflow: hidden;
+}
+
+.frontpageView .leder h2 {
+  margin-top: 0;
+}
+
+.frontpageView .leder .p {
+  text-overflow: ellipsis;  
+  overflow: hidden;  
 }
 
 .frontpageView .leder .image {
@@ -135,7 +154,6 @@ body {
 .articleView {
     color: black;
     background: white;
-    font-size: 12px;
 }
 
 .articleView .leadText {
@@ -157,10 +175,19 @@ body {
 .articleView .mainImage img {
   width: 100%;
 }
-
+.articleView .mainImage.video .overlay {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: url('/images/play.png') center center no-repeat, rgba(66,66,66, 0.5);
+  
+  position: absolute;
+  z-index: 100;
+}
 .articleView .mainImage video {
   width: 100%;
   margin-top: 0;
+  height: 441px;
   display: none;
 }
 
@@ -188,17 +215,17 @@ body {
 .articleView .header {
   position: absolute;
   width: 100%;
-  height: 200px;
 }
 
 .articleView h1 {
   margin-top: 0;
-  font-size: 2em;
+  font-size: 200%;
   font-weight: bold;
   background: rgba(255,255,255,.7);
 }
 
 .articleView p {
+  font-size: 120%;
   margin-top: 1em;
   margin-bottom: 0;
 }
@@ -225,6 +252,7 @@ body {
  
 .sectionView h1 {
   font-family: Arial;
+  font-size: 130%;
   position: absolute;
   right: 0;
   background: white;
@@ -242,12 +270,11 @@ body {
 
 .sectionView .article {
   background: none;
-  font-size: 12px;
 }
 
 .sectionView .article h2 {
   font-weight: bold;
-  font-size: 110%;
+  font-size: 120%;
   margin: 20px;
 }
 
@@ -274,7 +301,7 @@ body {
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   min-height: 500px;
-  font-size: 120%;
+  font-size: 125%;
   margin-bottom: 40px;
 }
 
@@ -284,7 +311,7 @@ body {
 }
 
 .sectionView .article0 .leadText {
-  font-size: 70%;
+  font-family: "Book Antiqua", Times;
 }
 
 /*

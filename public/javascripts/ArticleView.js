@@ -13,15 +13,29 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
         completed = this.breakPages(laidOutPages);
       }
       if (completed) {
-        $('.mainImage.video img', this.body.dom).click(function () {
+        $('.mainImage.video .overlay', this.body.dom).safeClick(function () {
           $(this).hide();
+          $(this).siblings("img").hide();
           var video = $(this).siblings("video");
           video.show();
           video[0].play();
         });
       }
     });
-
+    
+    this.on('beforecardswitchout', function () {
+      $('.mainImage.video .overlay, .mainImage.video img', this.body.dom).show();
+      var video = $('.mainImage.video video', this.body.dom);
+      if (video.length) {
+        video[0].pause();
+        video.hide();
+      }      
+    }, this);
+    
+    this.on('cardswitchout', function () {
+      this.setActiveItem(0, false);
+    }, this);
+    
     var article = $(this.article);
     this.id = 'article-' + article.attr("id");
 
@@ -58,7 +72,7 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
     var video = article.children("videos").children("video:first");
     var image = video.children("image:first");
     if (image.length) {      
-      return '<div class="mainImage video"><img src="' + image.attr('src') + '" /><video src="' + video.attr('movieUrl') + '" controls="controls"></video></div>';
+      return '<div class="mainImage video"><span class="overlay"></span><img src="' + image.attr('src') + '" /><video src="' + video.attr('movieUrl') + '" controls="controls"></video></div>';
     }
 
     var image = article.children("images").children("image:first");
