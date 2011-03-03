@@ -28,9 +28,10 @@ no.bekk.html5paper.FrontpageView = Ext.extend(Ext.Panel, {
   
   buildArticleHtml: function (article, index) {
     var image = this.findImage(article);
+    var useThumb = index > 0;
     var id = article.attr("id");
     return '<div class="article article' + index + '" articleid="' + id + '">'
-        + '<div class="image">' + (image ? '<img src="' + image.attr('src') + '" />' : '') + '</div>'
+        + '<div class="image">' + (image ? '<img src="' + (useThumb ? image.attr('thSource') : image.attr('src')) + '" />' : '') + '</div>'
         + '<h2>' + article.children('title').text() + '</h2>'
         + '<div class="leadText">' + article.children('leadText').text() + '</div>'
       + '</div>';
