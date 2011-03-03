@@ -65,7 +65,7 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
   },
   
   formatBody: function(text) {
-    return "<p>" + text.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br />") + "</p>";
+    return "<p>" + text.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br />") + "&nbsp;■</p>";
   },
   
   buildImage: function (article) {
