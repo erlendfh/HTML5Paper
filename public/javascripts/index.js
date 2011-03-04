@@ -65,9 +65,16 @@ function initApp(xml) {
   });
   
   $('.frontpageView .article, .sectionView .article').safeClick(function (e) {
-    var id = $(this).attr("articleid");
-    window.location.hash = "#article-" + id;
-    app.showArticle(articleIndex[id]);
+    e.stopPropagation();
+    e.preventDefault();
+    el = $(this);
+    el.css("background", "#ddd");
+    setTimeout(function () {
+      var id = el.attr("articleid");
+      window.location.hash = "#article-" + id;
+      app.showArticle(articleIndex[id]);
+      el.css("background", "");
+    }, 1);
   });
 }
 
