@@ -167,13 +167,14 @@ body {
 
 .articleView .mainImage {
   width: 100%;
-  max-height: 441px;
+  height: 61.5%;
   overflow: hidden;
   background: black;
 }
 
 .articleView .mainImage img {
-  width: 100%;
+  min-width: 100%;
+  max-height: 100%;
 }
 .articleView .mainImage.video .overlay {
   display: block;
@@ -187,7 +188,7 @@ body {
 .articleView .mainImage video {
   width: 100%;
   margin-top: 0;
-  height: 441px;
+  height: 100%;
   display: none;
 }
 
@@ -209,7 +210,7 @@ body {
 }
 
 .articleView .page:nth-child(1) .body {
-  top: 441px;
+  top: 61.5%;
 }
 
 .articleView .header {
