@@ -90,7 +90,7 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
     var size = this.body.getSize();
 
     var lastPage = $($(this.body.dom).find(".x-carousel-item:last"));
-    var pages = lastPage.pageBreak(this.columns, 2);
+    var pages = lastPage.pageBreak(this.columns,  (laidOutPages == 0 ? 2 : 0));
     
     if (pages.length == 1) return true;
     
