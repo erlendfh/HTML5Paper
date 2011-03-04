@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var io = require('socket.io');
 
 var app = module.exports = express.createServer();
 
@@ -47,6 +48,15 @@ app.get('/data/edition', function (req, res) {
 app.get('/data/frontpage', function (req, res) {
   proxyRequest('brett.medianorge.no', '/ipad/ws/frontpage', res);
 });
+
+
+socket = io.listen(app);
+var clients = [];
+var startTime = new Date().getTime();
+socket.on('connection', function (client) {
+  client.send(startTime);
+});
+
 
 if (!module.parent) {
   app.listen(process.env.CCL_PORT || 9090);
