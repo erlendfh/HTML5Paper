@@ -8,7 +8,7 @@ no.bekk.html5paper.SectionView = Ext.extend(Ext.Panel, {
     var articles = section.children("article");
     
     var mainArticles = "";
-    for (var i=0; i < 3; i++) {
+    for (var i=0; i < 4; i++) {
       mainArticles += this.buildArticleHtml($(articles[i]), i);
     }
     

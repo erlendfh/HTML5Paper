@@ -1,6 +1,8 @@
 (function () {
+  // Galaxy: 499x657
   
 function initApp(xml) {
+    
   xml = $(xml);
 
   // Create a Carousel of Items

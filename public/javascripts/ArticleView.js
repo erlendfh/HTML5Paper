@@ -13,7 +13,7 @@ no.bekk.html5paper.ArticleView = Ext.extend(Ext.Carousel, {
         completed = this.breakPages(laidOutPages);
       }
       if (completed) {
-        $('.mainImage.video .overlay', this.body.dom).safeClick(function () {
+        $('.mainImage.video .overlay', this.body.dom).click(function () {
           $(this).hide();
           $(this).siblings("img").hide();
           var video = $(this).siblings("video");
